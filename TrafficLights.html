@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Traffic</title>
+		<link rel="shortcut icon" type="image/gif" href="https://i.gifer.com/BllB.gif" />
+		<style>
+			html,body
+			{
+    				height:100%;
+    				width:100%;
+    				padding:0;
+    				margin:0;
+			}
+			#table
+			{
+				height:100%;
+    				width:100%;
+    				padding:0;
+    				margin:0;
+    				display: table; 
+				border:2px solid black;
+				border-collapse: collapse;
+			}
+			.tr
+			{ 	
+    				display: table-row; 
+				border:2px solid black;
+			}
+			.td
+			{ 
+   				display: table-cell; 
+				border:2px solid black;
+			}
+			.b
+			{
+				background-color:black;
+			}
+			.road
+			{
+				background-color:#A9A9A9;
+				color:#A9A9A9;
+			}
+		</style>
+	</head>
+	<body style="background-color:khaki;">
+		<p style="font-family:Helvetica;color:black;font-size:2em;text-align:center;">TRAFFIC LIGHT SIMULATION</p>
+		<table id="table">
+    			<tr class="tr">
+        				<td class="td" style="background-color:khaki;"></td>
+				<td class="td" >
+					<table id="table">
+						<tr class="tr">
+							<td class="td  road" colspan="3">a</td>
+						</tr>
+						<tr class="tr">
+							<td class="td b" id="tg">l</td>
+							<td class="td b" id="ty">l</td>
+							<td class="td b" id="tr1">l</td>
+						</tr>
+					</table>
+				</td>
+       		 		<td class="td" style="background-color:khaki;" ></td>
+   		 	</tr>
+
+   		 	<tr class="tr">
+      		  		<td class="td">
+					<table id="table">
+						<tr class="tr">
+							<td class="td  road" rowspan="3">a</td>
+							<td class="td b" id="lr">l</td>
+							</tr>
+							<tr class="tr">
+							<td class="td b" id="ly">l</td>
+							</tr>
+							<tr class="tr">
+							<td class="td b" id="lg">l</td>
+						</tr>
+					</table>
+				</td>
+      		  		<td class="td road"></td>
+       		 		<td class="td">
+					<table id="table">
+						<tr class="tr">
+							<td class="td b" id="rg">l</td>
+							<td class="td  road" rowspan="3">a</td>
+							</tr>
+							<tr class="tr">
+							<td class="td b" id="ry">l</td>
+							</tr>
+							<tr class="tr">
+							<td class="td b" id="rr">l</td>
+						</tr>
+					</table>
+				</td>
+    			</tr>
+
+			<tr class="tr">
+      		  		<td class="td" style="background-color:khaki;"></td>
+      		  		<td class="td">
+					<table id="table">
+						<tr class="tr">
+							<td class="td b" id="br">l</td>
+							<td class="td b" id="by">l</td>
+							<td class="td b" id="bg">l</td>
+						</tr>
+						<tr class="tr">
+							<td class="td  road" colspan="3">z</td>
+						</tr>
+					</table>
+				</td>
+       		 		<td class="td" style="background-color:khaki;"></td>
+    			</tr>
+
+		</table>
+		<script>
+		window.setInterval("fun1();",1000);
+		function fun1()
+		{
+			var d=new Date();
+			var n=d.getSeconds();
+			if(n>=0 && n<=59)
+			{
+				//left signals
+				if(n>=15 && n<=57)
+				{
+					document.getElementById("lr").style.backgroundColor="#ff0605"; //left red
+					document.getElementById("lr").style.color="#ff0605";
+				}
+				else
+				{
+					document.getElementById("lr").style.backgroundColor="black";
+					document.getElementById("lr").style.color="black";
+				}
+				if((n>=13 && n<=14) || (n>=58 && n<=59))
+				{
+					document.getElementById("ly").style.backgroundColor="yellow"; //left yellow
+					document.getElementById("ly").style.color="yellow";
+				}
+				else
+				{
+					document.getElementById("ly").style.backgroundColor="black";
+					document.getElementById("ly").style.color="black";
+				}
+				if(n>=0 && n<=12)
+				{
+					document.getElementById("lg").style.backgroundColor="#33A532"; //left green
+					document.getElementById("lg").style.color="#33A532";	
+				}
+				else
+				{
+					document.getElementById("lg").style.backgroundColor="black"; 
+					document.getElementById("lg").style.color="black";
+				}
+		
+				//top signals
+				if(n>=30 || n<=12)
+				{
+					document.getElementById("tr1").style.backgroundColor="#ff0605"; //top red
+					document.getElementById("tr1").style.color="#ff0605"; 
+				}
+				else
+				{
+					document.getElementById("tr1").style.backgroundColor="black";
+					document.getElementById("tr1").style.color="black";
+				}
+				if((n>=28 && n<=29) || (n>=13 && n<=14))
+				{
+					document.getElementById("ty").style.backgroundColor="yellow"; //top yellow
+					document.getElementById("ty").style.color="yellow";
+				}
+				else
+				{
+					document.getElementById("ty").style.backgroundColor="black";
+					document.getElementById("ty").style.color="black";
+				}
+				if(n>=15 && n<=27)
+				{
+					document.getElementById("tg").style.backgroundColor="#33A532"; //top green
+					document.getElementById("tg").style.color="#33A532";
+				}
+				else
+				{
+					document.getElementById("tg").style.backgroundColor="black";
+					document.getElementById("tg").style.color="black";
+				}
+
+				//right signals
+				if(n>=45 || n<=27)
+				{
+					document.getElementById("rr").style.backgroundColor="#ff0605"; //right red
+					document.getElementById("rr").style.color="#ff0605";
+				}
+				else
+				{
+					document.getElementById("rr").style.backgroundColor="black";
+					document.getElementById("rr").style.color="black";
+				}
+				if((n>=28 && n<=29) || (n>=43 && n<=44))
+				{
+					document.getElementById("ry").style.backgroundColor="yellow"; //right yellow
+					document.getElementById("ry").style.color="yellow";
+				}
+				else
+				{
+					document.getElementById("ry").style.backgroundColor="black";
+					document.getElementById("ry").style.color="black";
+				}
+				if(n>=30 && n<=42)
+				{
+					document.getElementById("rg").style.backgroundColor="#33A532"; //right green
+					document.getElementById("rg").style.color="#33A532";
+				}
+				else
+				{
+					document.getElementById("rg").style.backgroundColor="black";
+					document.getElementById("rg").style.color="black";
+				}
+				
+				//bottom signals
+				if(n>=0 && n<=42)
+				{
+					document.getElementById("br").style.backgroundColor="#ff0605"; //bottom red
+					document.getElementById("br").style.color="#ff0605";
+				}
+				else
+				{
+					document.getElementById("br").style.backgroundColor="black";
+					document.getElementById("br").style.color="black";
+				}
+				if((n>=43 && n<=44) || (n>=58 && n<=59))
+				{
+					document.getElementById("by").style.backgroundColor="yellow"; //bottom yellow
+					document.getElementById("by").style.color="yellow";
+				}
+				else
+				{
+					document.getElementById("by").style.backgroundColor="black";
+					document.getElementById("by").style.color="black";
+				}
+				if(n>=45 && n<=57)
+				{
+					document.getElementById("bg").style.backgroundColor="#33A532"; //bottom green
+					document.getElementById("bg").style.color="#33A532";
+				}
+				else
+				{
+					document.getElementById("bg").style.backgroundColor="black";
+					document.getElementById("bg").style.color="black";
+				}
+			}
+				/* Poladi Sathvik Rao (09-11-2019) */
+		}
+		</script>
+	</body>
+</html>
